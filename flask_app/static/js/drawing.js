@@ -2,45 +2,31 @@ console.log("CHECL");
 
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
-// ctx.fillStyle = "#FF0000";
-// ctx.fillRect(0, 0, 150, 75);
+let rect = canvas.getBoundingClientRect();
 
-ctx.moveTo(0, 0);
-ctx.lineTo(200, 100);
-ctx.stroke();
+ctx.fillStyle = "black";
 
-// ctx.beginPath();
-// ctx.arc(95, 50, 40, 0, 2 * Math.PI);
-// ctx.stroke();
+var drawing;
+function draw(event) {
+    drawing = setInterval(function() {
 
-// ctx.font = "30px Arial";
-// ctx.fillText("Hello World", 10, 50);
+        let pos = getMousePos(event)
 
-ctx.font = "30px Arial";
-ctx.strokeText("Hello World", 10, 50);
+        var circle = new Path2D();
+        console.log(pos);
+    
+        circle.arc(pos.x, pos.y, 5, 0, 2 * Math.PI);
+        ctx.fill(circle)
+    }, 100)
 
-ctx.font = "30px Comic Sans MS";
-ctx.fillStyle = "red";
-ctx.textAlign = "center";
-ctx.fillText("Hello World", canvas.width/2, canvas.height/2);
-
-document.onmousedown = (event) => {
-    console.log("AY",event);
-    console.log("dasds");
-    document.onmousemove = (event) => {
-        console.log(event);
-        let x  = canvas.width + event.pageX;
-        let y = canvas.height + event.pageY;
-        ctx.moveTo(x, y);
-        ctx.lineTo(x + 1, y + 1);
-        ctx.stroke();
-            // xcoor = event.pageX;
-            // ycoor = event.pageY;
-            // mapcan.fillStyle = "#000000";
-            // mapcan.fillRect(-1*(11617845.3461), -1*(8093417.14653), 10, 10);
-        }
 }
 
-document.onmouseup = () => {
-    console.log("sadas");
+function getMousePos(event) {
+    return {
+        x : event.pageX - rect.left,
+        y : event.pageY - rect.top
+    }
 }
+
+document.onmousedown = (event) => draw(event)
+document.onmouseup = (event) => clearInterval(drawing)
