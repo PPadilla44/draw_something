@@ -24,12 +24,15 @@ ctx.fillStyle = "red";
 ctx.textAlign = "center";
 ctx.fillText("Hello World", canvas.width/2, canvas.height/2);
 
-document.onmousedown = () => {
+document.onmousedown = (event) => {
+    console.log("AY",event);
     console.log("dasds");
     document.onmousemove = (event) => {
         console.log(event);
-        ctx.moveTo(event.clientX, event.clientY)
-        ctx.lineTo(event.clientX, event.clientY);
+        let x  = canvas.width + event.pageX;
+        let y = canvas.height + event.pageY;
+        ctx.moveTo(x, y);
+        ctx.lineTo(x + 1, y + 1);
         ctx.stroke();
             // xcoor = event.pageX;
             // ycoor = event.pageY;
