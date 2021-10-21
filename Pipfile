@@ -7,6 +7,8 @@ name = "pypi"
 flask = "*"
 pymysql = "*"
 bcrypt = "*"
+flask-bcrypt = "*"
+livereload = "==2.5.1"
 
 [dev-packages]
 
