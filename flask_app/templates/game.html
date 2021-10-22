@@ -11,7 +11,39 @@
 </head>
 <body>
     <div class="container d-flex align-items-center justify-content-center" style="height: 100vh; width: 100vw;">
-        <h1>HEllo</h1>
+
+        <div id="choices">
+            <p id="opp" value="{{ user.id }}">Opponent {{ user.username }}</p>
+            <h1 id="hello">Hello, please choose a word you would like to draw!</h1>
+            
+            <ul class="d-flex align-items-center flex-column justify-content-center pointer" style="cursor: pointer~;">
+                {% for word in words %}
+                    <li onclick="choose('{{word}}')"><h5>{{ word }}</h5></li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div id="start" style="display: none;">
+            {% include 'draw.html' %}
+        </div>
+
+
     </div>
 </body>
+
+<script>    
+    var choices = document.getElementById("choices")
+    var start = document.getElementById("start")
+    var word = document.getElementById("word")
+
+    
+    const choose = (elem) => {
+        
+        word.innerHTML = elem;
+        choices.style.display = "None"
+        start.style.display = "block"
+}
+
+</script>
+
 </html>

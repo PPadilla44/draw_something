@@ -20,9 +20,14 @@
             </li>
         {% endfor %}
     </ul>
-    
-    
+    <div id="games" class="container">
+
+    </div>
+
+
     <script>
+
+
         var userList = document.getElementById("userList") 
         var who = document.getElementById("who") 
 
@@ -36,6 +41,23 @@
             window.location.replace(`/game/${id}`)
 
         }
+
+
+        var gamesDom = document.getElementById('games');
+
+        fetch('http://localhost:5500/get_images')
+        .then(res => res.json())
+        .then(res => res.games)
+        .then(games => {
+            gamesDom.innerHTML = "";
+            for (const game of games) {
+                gamesDom.innerHTML += (`
+                    <div class="border" style="width: fit-content;">
+                        <img src=${game.image}  ">
+                    <div>
+                `)
+            }
+        } )
 
     </script>
 </body>

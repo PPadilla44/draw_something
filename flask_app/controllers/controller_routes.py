@@ -1,7 +1,9 @@
+from json import encoder
 from flask.globals import session
 from flask_app import app
-from flask import redirect, render_template
-from ..models import model_user
+from flask import jsonify, redirect, render_template
+from ..models import model_user, model_drawing
+
 
 @app.route('/')
 def index():
@@ -14,7 +16,15 @@ def dashboard():
     
     context = {
         "user" : model_user.User.get_user_by_id( { "id": session["uuid"] } ),
-        "userList" : model_user.User.get_all_users_not_self( { "id" : session['uuid'] } )
+        "userList" : model_user.User.get_all_users_not_self( { "id" : session['uuid'] } ),
     }
-    
+
     return render_template("dashboard.html", **context)
+
+@app.route("/get_images")
+def get_images():
+    games = model_drawing.Drawing.get_all_drawings_by_receiver_id( { "receiver_id": session['uuid'] } )
+    for game in games:
+        game['image'] = str(game['image'], encoding='utf-8')
+    return jsonify(games = games)
+
