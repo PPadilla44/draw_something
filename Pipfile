@@ -9,6 +9,7 @@ pymysql = "*"
 bcrypt = "*"
 flask-bcrypt = "*"
 livereload = "==2.5.1"
+flask-cors = "*"
 
 [dev-packages]
 

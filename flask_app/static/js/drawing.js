@@ -99,26 +99,10 @@ window.onload = () => {
 const handleEventListeners = () => {
 
     document.addEventListener("mousemove", handleMouseMove)
-    document.addEventListener("click", handleDot)
     document.addEventListener("mousedown", handleDown)
 
     document.addEventListener("mouseup", handleUp)
     document.addEventListener("wheel", handleLineWidth)
-
-}
-
-const handleDot = (e) => {
-
-    if (!rezingBrush) {
-        console.log(e.clientX - 70);
-        let lineWidth = (context.lineWidth)/2
-        console.log("LOG", lineWidth);
-        context.beginPath();
-        context.arc(e.clientX- 60, e.clientY - 60, lineWidth , 0, 2 * Math.PI);
-        context.fill()
-        context.stroke();
-
-    }
 
 }
 
@@ -145,6 +129,15 @@ const handleDown = (e) => {
         drawing = !drawing;
         context.moveTo(e.clientX - 60, e.clientY - 60);
         context.beginPath();
+        
+        let lineWidth = (context.lineWidth) / 2; 
+        console.log("Line", context.lineWidth);
+        console.log("Radius", lineWidth);
+        // context.beginPath();
+        context.arc(e.clientX- 60, e.clientY - 60, lineWidth , 0, 2 * Math.PI);
+        context.fill()
+        context.stroke();
+
     }
 
 }

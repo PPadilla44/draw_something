@@ -13,12 +13,17 @@
     <button onclick="selectUser()">Send a drawing!</button>
     <h2 id="who" style="display: none">Who Would You Like To Send To?</h2>
     <ul style="display: none; color: red; cursor: pointer;" id="userList">
-        {% for user in userList %}
-            <li onclick="select(this)" >
-                <p>{{ user.username }}</p>
-                <input type="hidden" name="user" value="{{user.id}}">
-            </li>
-        {% endfor %}
+        {% if userList %}
+            {% for user in userList %}
+                <li onclick="select(this)" >
+                    <p>{{ user.username }}</p>
+                    <input type="hidden" name="user" value="{{user.id}}">
+                </li>
+            {% endfor %}
+            
+        {% else %}
+            <h1>NO USERS</h1>
+        {% endif %}
     </ul>
     <div id="games" class="container">
 
