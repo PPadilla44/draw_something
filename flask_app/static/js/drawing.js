@@ -4,9 +4,26 @@ var rezingBrush = false
 var context;
 var canvas;
 var canvasHolder;
+var isDisplayed;
+
+
+
 
 
 window.onload = () => {
+
+
+    const localWord  = localStorage.getItem("word")
+
+    const choices = document.getElementById("choices")
+    const start = document.getElementById("start")
+    const word = document.getElementById("word")
+
+    if(localWord) {
+        word.innerHTML = localWord;
+        choices.style.display = "None";
+        start.style.display = "block";
+    }
 
     //Clear Button
     document.getElementById('btnClear').addEventListener('click', function () {
@@ -40,7 +57,7 @@ window.onload = () => {
         context.strokeStyle = document.getElementById('colorChange').value;
     }, false);
 
-    //Save
+    //Send
     var myForm = document.getElementById('myForm');
     myForm.onsubmit = (e) => {
         console.log("MYFORM");
@@ -67,17 +84,28 @@ window.onload = () => {
         data.append("receiver_id", receiver_id);
 
         fetch("http://localhost:5500/send/drawing", { method: "POST", body: data })
-            .then(res => res.json())
-            .then(res => console.log(res))
+            .then(res => {
+                localStorage.removeItem('word')
+                location.href = "/dashboard"
+            })
+            .catch(err => console.log(err))
     };
 
 
     //Size Canvas
     canvas = document.getElementById("myCanvas");
+    console.log(canvas);
 
     context = canvas.getContext("2d")
     canvas.width = window.innerWidth - 120;
     canvas.height = window.innerHeight - 120;
+
+    isDisplayed = 
+    document.getElementById("start").style.display == "none" 
+    ? false : true 
+    console.log(isDisplayed);
+    
+
 
 
     //Mouse movement
@@ -100,7 +128,6 @@ const handleEventListeners = () => {
 
     document.addEventListener("mousemove", handleMouseMove)
     document.addEventListener("mousedown", handleDown)
-
     document.addEventListener("mouseup", handleUp)
     document.addEventListener("wheel", handleLineWidth)
 
@@ -108,7 +135,7 @@ const handleEventListeners = () => {
 
 const handleMouseMove = (e) => {
 
-    if (!rezingBrush) {
+    if (!rezingBrush && isDisplayed) {
 
         if (drawing) {
             context.lineTo(e.clientX - 60, e.clientY - 60);
@@ -125,16 +152,15 @@ const handleMouseMove = (e) => {
 
 const handleDown = (e) => {
 
-    if (!rezingBrush) {    
+    if (!rezingBrush && isDisplayed) {
+
         drawing = !drawing;
         context.moveTo(e.clientX - 60, e.clientY - 60);
         context.beginPath();
         
-        let lineWidth = (context.lineWidth) / 2; 
-        console.log("Line", context.lineWidth);
-        console.log("Radius", lineWidth);
-        // context.beginPath();
-        context.arc(e.clientX- 60, e.clientY - 60, lineWidth , 0, 2 * Math.PI);
+        let arc = (context.lineWidth / 10) / (2 * Math.PI)
+
+        context.arc(e.clientX- 60, e.clientY - 60, arc , 0, 2 * Math.PI);
         context.fill()
         context.stroke();
 
@@ -145,7 +171,7 @@ const handleDown = (e) => {
 
 const handleUp = () => {
 
-    if (!rezingBrush && drawing) {
+    if (!rezingBrush && isDisplayed && drawing) {
         drawing = !drawing;
     }
 
@@ -193,3 +219,15 @@ const handleResize = (e) => {
     context.lineWidth = val;
 
 }
+
+
+const choose = (elem) => {
+    localStorage.setItem("word", elem)
+    
+    word.innerHTML = elem;
+    choices.style.display = "None"
+    start.style.display = "block"
+    isDisplayed = true;
+}
+
+
