@@ -9,7 +9,6 @@ var isDisplayed;
 
 
 
-
 window.onload = () => {
 
 
@@ -19,9 +18,13 @@ window.onload = () => {
     const start = document.getElementById("start")
     const word = document.getElementById("word")
 
+    const nav = document.getElementById("nav");
+
+
     if(localWord) {
         word.innerHTML = localWord;
         choices.style.display = "None";
+        nav.style.display = "None";
         start.style.display = "block";
     }
 
@@ -78,7 +81,6 @@ window.onload = () => {
 
         let data = new FormData(myForm)
 
-        console.log(data);
         data.append("image", image);
         data.append("word", word);
         data.append("receiver_id", receiver_id);
@@ -98,7 +100,11 @@ window.onload = () => {
 
     context = canvas.getContext("2d")
     canvas.width = window.innerWidth - 120;
+    // canvas.height = window.innerHeight - 120;
     canvas.height = window.innerHeight - 120;
+
+
+    
 
     isDisplayed = 
     document.getElementById("start").style.display == "none" 
@@ -223,8 +229,10 @@ const handleResize = (e) => {
 
 const choose = (elem) => {
     localStorage.setItem("word", elem)
-    
+
+
     word.innerHTML = elem;
+    nav.style.display = "None"
     choices.style.display = "None"
     start.style.display = "block"
     isDisplayed = true;

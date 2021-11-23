@@ -17,12 +17,19 @@ def get_user(id):
         "fish" : "fish",
     }
     
-    user = model_user.User.get_user_by_id( { "id": id } )
+
+    context = {
+
+        "words" : words,
+        'user' : model_user.User.get_user_by_id( { "id": id } ),
+        'curUser': model_user.User.get_user_by_id( { "id": session['uuid'] } ),
+
+    }
 
 
 
 
-    return render_template("game.html", user=user, words=words)
+    return render_template("game.html", **context)
 
 
 @app.route("/send/drawing", methods=["POST"])

@@ -14,9 +14,10 @@ class User:
 
     @classmethod
     def get_user_by_username(cls,data):
+        print(data)
         query = "SELECT * FROM users WHERE username = %(username)s;"
         results = connectToMySQL(DATABASE).query_db(query,data)
-        if len(results) < 1:
+        if not results:
             return False
         return cls(results[0])
 
@@ -32,7 +33,7 @@ class User:
 
     @classmethod
     def get_all_users_not_self(cls, data):
-        query = "SELECT * FROM users WHERE NOT id = %(id)s;"
+        query = "SELECT * FROM users WHERE NOT id = %(id)s LIMIT 5;"
         results = connectToMySQL(DATABASE).query_db(query, data)
         print(results)
         if len(results) < 1:
@@ -89,3 +90,9 @@ class User:
             return False
 
         return True
+
+    def user_to_dict(self):
+        return {
+            "id" : self.id,
+            "username" : self.username
+        }

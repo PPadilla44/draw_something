@@ -1,6 +1,7 @@
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask import flash, request
 from flask_app import app, DATABASE, bcrypt
+from flask_app.models import model_user
 
 class Drawing:
     def __init__(self,data):
@@ -11,6 +12,7 @@ class Drawing:
         self.receiver_id = data['receiver_id']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
+        self.creator = data['creator']
 
 
     @classmethod
@@ -35,5 +37,9 @@ class Drawing:
             return False
         drawings = []
         for drawing in results:
-            drawings.append(drawing)
+            data = {
+                **drawing,
+                "creator": model_user.User.get_user_by_id({"id": drawing['creator_id']}).user_to_dict()
+            }
+            drawings.append(data)
         return drawings

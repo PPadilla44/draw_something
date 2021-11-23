@@ -1,3 +1,4 @@
+from flask.json import jsonify
 from flask_app import app, bcrypt
 from flask import render_template, redirect, request, session, flash
 from ..models import model_user
@@ -36,3 +37,16 @@ def login():
 def logout():
     session.clear()
     return redirect("/")
+
+@app.route("/search_user_by_username", methods=["POST"])
+def search_user_by_username():
+
+    user = model_user.User.get_user_by_username(request.form)
+    print(user)
+    if not user:
+        return jsonify(False)
+    
+    user = user.user_to_dict()
+    print(user)    
+
+    return jsonify(user)
