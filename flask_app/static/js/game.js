@@ -24,7 +24,7 @@ window.onload = () => {
         .then(games => {
             for (const game of games) {
                 gamesDom.innerHTML += (`
-                    <a href="/game/guess/${game.id}" style="cursor: pointer;" class="dash-drawings border d-flex align-items-center flex-column rounded bg-secondary">
+                    <a href="/game/guess/${game.id}" style="cursor: pointer;" class="dash-drawings d-flex align-items-center flex-column rounded bg-secondary">
                         <h1>${game.creator.username}</h1>
                         <img  src=${game.image}>
 
