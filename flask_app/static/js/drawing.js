@@ -58,12 +58,12 @@ window.onload = () => {
     //Color
     document.getElementById('colorChange').addEventListener('change', function () {
         context.strokeStyle = document.getElementById('colorChange').value;
+        context.fillSyle = document.getElementById('colorChange').value;
     }, false);
 
     //Send
     var myForm = document.getElementById('myForm');
     myForm.onsubmit = (e) => {
-        console.log("MYFORM");
         e.preventDefault()
         document.getElementById('myCanvas').style.display = "none";
         document.getElementById('tools').style.display = "none";
@@ -74,10 +74,6 @@ window.onload = () => {
         receiver_id = opp.attributes[1].value;
 
         document.getElementById('canvasImg').src = image;
-
-        console.log(image);
-        console.log(word);
-        console.log(receiver_id);
 
         let data = new FormData(myForm)
 
@@ -96,13 +92,10 @@ window.onload = () => {
 
     //Size Canvas
     canvas = document.getElementById("myCanvas");
-    console.log(canvas);
 
     context = canvas.getContext("2d")
     canvas.width = window.innerWidth - 120;
-    // canvas.height = window.innerHeight - 120;
     canvas.height = window.innerHeight - 120;
-
 
     
 
@@ -119,7 +112,8 @@ window.onload = () => {
     window.onresize = handleResize
 
     //Style line
-    context.strokeStyle = "#000";
+    context.strokeStyle = document.getElementById('colorChange').value;
+    context.fillStyle = document.getElementById('colorChange').value;
     context.lineJoin = "round";
     context.lineWidth = 5;
     document.getElementById('lineWidth').value = 5;
@@ -141,6 +135,7 @@ const handleEventListeners = () => {
 
 const handleMouseMove = (e) => {
 
+
     if (!rezingBrush && isDisplayed) {
 
         if (drawing) {
@@ -156,19 +151,28 @@ const handleMouseMove = (e) => {
 
 }
 
+
+
 const handleDown = (e) => {
 
     if (!rezingBrush && isDisplayed) {
 
         drawing = !drawing;
+
+
+        // Handle First Click
+        context.fillStyle = context.strokeStyle;
         context.moveTo(e.clientX - 60, e.clientY - 60);
         context.beginPath();
-        
-        let arc = (context.lineWidth / 10) / (2 * Math.PI)
-
+        let arc = context.lineWidth / 2
         context.arc(e.clientX- 60, e.clientY - 60, arc , 0, 2 * Math.PI);
-        context.fill()
-        context.stroke();
+        context.fill();
+        context.closePath();
+
+
+
+        context.moveTo(e.clientX - 60, e.clientY - 60);
+        context.beginPath();
 
     }
 
@@ -221,6 +225,7 @@ const handleResize = (e) => {
     context.drawImage(temp_cnvs, 0, 0);
 
     context.strokeStyle = "#000";
+    context.fillStyle = "#000";
     context.lineJoin = "round";
     context.lineWidth = val;
 
