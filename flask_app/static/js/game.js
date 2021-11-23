@@ -3,8 +3,19 @@ var who;
 var gamesDom;
 var sendBtn;
 var searchForm;
+var dashTitle;
+
+let id = localStorage.getItem("gameId") 
+if (id) {
+    localStorage.removeItem("attempts")
+    localStorage.removeItem("correct")
+    localStorage.removeItem("gameId")
+    
+    location.href = `/delete/drawing/${id}`
+}
 
 localStorage.removeItem("word")
+
 
 window.onload = () => {
 
@@ -14,6 +25,7 @@ window.onload = () => {
     sendBtn = document.getElementById('send-button');
     gamesDom = document.getElementById('games');
     searchForm = document.getElementById('search');
+    dashTitle = document.getElementById('dash-title');
 
     searchForm.onsubmit = (e) => search(e);
 
@@ -22,6 +34,9 @@ window.onload = () => {
         .then(res => res.json())
         .then(res => res.games)
         .then(games => {
+            if (!games) {
+                dashTitle.innerText = `Nothing To Guess YET!`
+            } else {
             for (const game of games) {
                 gamesDom.innerHTML += (`
                     <a href="/game/guess/${game.id}" style="cursor: pointer;" class="dash-drawings d-flex align-items-center flex-column rounded bg-secondary">
@@ -31,6 +46,7 @@ window.onload = () => {
                     <a>
                     `)
             }
+        }
         })
 }
 
@@ -42,7 +58,7 @@ const selectUser = () => {
 }
 
 const select = (user) => {
-    if(user.children[0]) {
+    if (user.children[0]) {
         let id = user.children[1].value;
         location.href = `/game/${id}`;
     }

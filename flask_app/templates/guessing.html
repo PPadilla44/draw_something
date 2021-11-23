@@ -9,11 +9,13 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
         rel="stylesheet">
+
+    <script type="text/javascript" src="{{ url_for('static', filename='js/guessing.js') }}"></script>
+
     <title>Guess</title>
 </head>
-<body>
+<body class="bg-primary">
     <div id="nav" class="nav bg-dark text-white justify-content-center flex-column">
-
         <div class="mb-3 mt-3 d-flex justify-content-between container align-items-center">
             <h1>Hello {{ curUser.username }}!</h1>
             <div class="d-flex">
@@ -21,8 +23,21 @@
                 <a class="btn btn-outline-danger" href="/logout">Logout</a>
             </div>
         </div>
+    </div>
+    <div id="guessContainer" class="text-center bg-primary p-1 d-flex flex-column justify-content-center align-items-center">
+        <img src={{drawing.image}} alt="drawing">
+    </div>
+    <div class="userGuesses text-center bg-primary p-1 d-flex flex-column justify-content-center align-items-center">
+        <h1 id="guessTitle">Take A Guess!</h1>
+        
+        <form id="guessForm" class="d-flex flex-column align-items-center">
+            <input type="text" name="guess">
+            <button id="guessBtn" >Guess</button>
+        </form>
+        <p id="guessText"></p>
 
     </div>
-    <img src={{drawing.image}} alt="">
+
 </body>
+
 </html>

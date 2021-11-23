@@ -24,7 +24,8 @@ def dashboard():
 @app.route("/get_images")
 def get_images():
     games = model_drawing.Drawing.get_all_drawings_by_receiver_id( { "receiver_id": session['uuid'] } )
-    for game in games:
-        game['image'] = str(game['image'], encoding='utf-8')
+    if(games):
+        for game in games:
+            game['image'] = str(game['image'], encoding='utf-8')
     return jsonify(games = games)
 

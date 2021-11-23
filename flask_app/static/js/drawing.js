@@ -6,6 +6,10 @@ var canvas;
 var canvasHolder;
 var isDisplayed;
 
+localStorage.removeItem("attempts")
+localStorage.removeItem("correct")
+localStorage.removeItem("gameId")
+
 
 
 
@@ -72,6 +76,10 @@ window.onload = () => {
         var word = document.getElementById("word").innerHTML
         var opp = document.getElementById("opp")
         receiver_id = opp.attributes[1].value;
+
+
+        console.log(receiver_id);
+        console.log('SAdsda');
 
         document.getElementById('canvasImg').src = image;
 

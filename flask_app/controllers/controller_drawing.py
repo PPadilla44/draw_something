@@ -34,10 +34,15 @@ def get_user(id):
 
 @app.route("/send/drawing", methods=["POST"])
 def send_drawing():
-    print("SEND")
-    print(request.form)
     model_drawing.Drawing.save(request.form)
-    return jsonify(message="YEET")
+    return jsonify(message="SUCCESS")
+
+
+@app.route("/get/answer", methods=['POST'])
+def get_drawing():
+    drawing = model_drawing.Drawing.get_drawing_by_id(request.form)
+    return jsonify(answer = drawing['word'])
+
 
 @app.route("/game/guess/<id>")
 def guess_drawing(id):
@@ -55,4 +60,17 @@ def guess_drawing(id):
 
 
     return render_template('guessing.html', **context )
+
+
+@app.route("/delete/drawing/<int:id>")
+def delete_drawing(id):
+    
+    drawing = model_drawing.Drawing.get_drawing_by_id({'id': id})
+
+    if (session['uuid'] != drawing['receiver_id']):
+        return redirect("/dashboard")
+    
+    
+    model_drawing.Drawing.delete({"id": id})
+    return redirect("/dashboard")
 

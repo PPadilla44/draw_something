@@ -19,7 +19,7 @@ class Drawing:
     def get_drawing_by_id(cls,data):
         query = "SELECT * FROM drawings WHERE id = %(id)s;"
         results = connectToMySQL(DATABASE).query_db(query,data)
-        if len(results) < 1:
+        if not results:
             return False
 
         data = {
@@ -38,7 +38,7 @@ class Drawing:
     def get_all_drawings_by_receiver_id(cls, data):
         query = "SELECT * FROM drawings WHERE receiver_id = %(receiver_id)s;"
         results = connectToMySQL(DATABASE).query_db(query,data)
-        if len(results) < 1:
+        if not results:
             return False
         drawings = []
         for drawing in results:
@@ -48,3 +48,8 @@ class Drawing:
             }
             drawings.append(data)
         return drawings
+
+    @classmethod
+    def delete(cls, data):
+        query = "DELETE FROM drawings WHERE id = %(id)s";
+        return connectToMySQL(DATABASE).query_db(query, data)
