@@ -21,7 +21,12 @@ class Drawing:
         results = connectToMySQL(DATABASE).query_db(query,data)
         if len(results) < 1:
             return False
-        return cls(results[0])
+
+        data = {
+            **results[0],
+            "creator": model_user.User.get_user_by_id({"id": results[0]['creator_id']}).user_to_dict()
+        }
+        return data
 
     @classmethod
     def save(cls,data):

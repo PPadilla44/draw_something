@@ -39,4 +39,20 @@ def send_drawing():
     model_drawing.Drawing.save(request.form)
     return jsonify(message="YEET")
 
+@app.route("/game/guess/<id>")
+def guess_drawing(id):
+
+    drawing = model_drawing.Drawing.get_drawing_by_id({'id': id})
+
+    if(drawing['receiver_id'] != session['uuid']):
+        return redirect("/dashboard")
+    drawing['image'] = str(drawing['image'], encoding='utf-8')
+
+    context = {
+        "drawing": drawing,
+        "curUser" : model_user.User.get_user_by_id({"id" : session['uuid']})
+    }
+
+
+    return render_template('guessing.html', **context )
 

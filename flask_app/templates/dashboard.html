@@ -9,7 +9,9 @@
         integrity='sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0' crossorigin='anonymous'>
     <script type="text/javascript" src="{{ url_for('static', filename='js/game.js') }}"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/drawing.css') }}">
-    
+    <link
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+    rel="stylesheet">
     <title>Dashboard</title>
 </head>
 
@@ -30,9 +32,9 @@
                 <button class="ms-2 btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
             </form>
 
-            <span  class="select-user" id="search-results">
+            <li onclick="select(this)" style="list-style: none;"  class="select-user" id="search-results">
                 <!-- Search Results -->
-            </span>
+            </li>
 
             
             {% if userList %}

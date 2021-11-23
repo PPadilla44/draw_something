@@ -22,14 +22,13 @@ window.onload = () => {
         .then(res => res.json())
         .then(res => res.games)
         .then(games => {
-            // gamesDom.innerHTML = "";
             for (const game of games) {
                 gamesDom.innerHTML += (`
-                    <div class="dash-drawings border d-flex align-items-center flex-column rounded bg-secondary" onclick="selectGame(${game.id})">
+                    <a href="/game/guess/${game.id}" style="cursor: pointer;" class="dash-drawings border d-flex align-items-center flex-column rounded bg-secondary">
                         <h1>${game.creator.username}</h1>
                         <img  src=${game.image}>
 
-                    <div>
+                    <a>
                     `)
             }
         })
@@ -43,9 +42,10 @@ const selectUser = () => {
 }
 
 const select = (user) => {
-    let id = user.children[1].value;
-    location.href = `/game/${id}`;
-
+    if(user.children[0]) {
+        let id = user.children[1].value;
+        location.href = `/game/${id}`;
+    }
 }
 
 const selectGame = (id) => {
@@ -72,23 +72,25 @@ const search = (e) => {
             if (!user) {
                 showElem.classList = "text-danger";
                 showElem.innerHTML = "No user found";
+                showElem.style.cursor = "auto"
                 return
             }
 
             if (user.id === +formData.get("curUser")) {
                 showElem.classList = "text-danger";
                 showElem.innerHTML = "Thats you!";
+                showElem.style.cursor = "auto"
+
                 return
             }
 
+            showElem.style.cursor = "pointer"
 
             showElem.classList = `select-user list-group-item border-success`
             showElem.innerHTML = `
 
-            <li style="list-style: none;" onclick="select(this) style="list-s" class="border-success">
-                <h4>${ user.username }</h4>
+                <h4>${user.username}</h4>
                 <input type="hidden" name="user" value="${user.id}">
-            </li>
         `
 
         })
