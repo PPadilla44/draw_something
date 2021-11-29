@@ -6,6 +6,9 @@ from ..models import model_user
 @app.route('/process-register', methods=['POST'])
 def register():
 
+    if model_user.User.get_user_by_username(request.form):
+        flash("Username already taken")
+        return redirect("/register")
     if not model_user.User.register_validation(request.form):
         return redirect('/register')
 

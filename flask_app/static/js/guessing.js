@@ -77,7 +77,6 @@ window.onload = (e) => {
             localStorage.setItem("correct", true);
             correct = true;
         } else {
-            console.log(attempts);
             guessTitle.style.color = "Red";
             guessTitle.innerText = `Incorrect! ${attempts - 1} Guesses Remaining`
             attempts--;
@@ -115,6 +114,8 @@ const changeGuessBtn = () => {
     guessBtn.style.backgroundColor = "#aa1924"
     guessBtn.onmouseover = () => guessBtn.style.backgroundColor = "#fc5060";
     guessBtn.onmouseout = () => guessBtn.style.backgroundColor = "#aa1924";
+    guessBtn.disabled = true;
+    setTimeout(() => guessBtn.disabled = false, 3000)
 }
 
 const deleteAndLeave = () => {

@@ -12,6 +12,7 @@ livereload = "==2.5.1"
 flask-cors = "*"
 
 [dev-packages]
+autopep8 = "*"
 
 [requires]
 python_version = "3.9"
