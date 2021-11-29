@@ -2,6 +2,8 @@ from json import encoder
 from flask.globals import session
 from flask_app import app
 from flask import jsonify, redirect, render_template
+
+from flask_app.controllers.controller_users import login
 from ..models import model_user, model_drawing
 
 
@@ -9,7 +11,19 @@ from ..models import model_user, model_drawing
 def index():
     if "uuid" in session:
         return redirect("/dashboard")
-    return render_template('index.html')
+    return redirect('/login')
+
+@app.route('/login')
+def show_login():
+    if "uuid" in session:
+        return redirect("/dashboard")
+    return render_template('index.html', login=True)
+
+@app.route('/register')
+def show_reg():
+    if "uuid" in session:
+        return redirect("/dashboard")
+    return render_template('index.html', login=False)
 
 @app.route("/dashboard")
 def dashboard():

@@ -1,6 +1,7 @@
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask import flash, request
 from flask_app import app, DATABASE, bcrypt
+import re
 
 class User:
     def __init__(self,data):
@@ -58,18 +59,18 @@ class User:
         if len(user['username']) < 2:
             flash(u'Username must be at least 2 characters','username')
             is_valid = False
- 
 
-        # if len(user['password']) < 8:
-        #     flash(u'Password must be at least 8 characters','password')
-        #     is_valid = False
 
-        # #Check for at least 1 digit
+        if len(user['password']) < 8:
+            flash(u'Password must be at least 8 characters','password')
+            is_valid = False
+
+        #Check for at least 1 digit
         # if not re.search(r'\d', user['password']):
         #     flash(u'Password must contain at least 1 number','password')
         #     is_valid = False
         
-        # if not re.match(r'\w*[A-Z]\w*', user['password']):
+        # if not re.match(r'\?=.*[A-Z]*', user['password']):
         #     flash(u'Password must contain at least 1 capitol letter','password')
         #     is_valid = False
 
