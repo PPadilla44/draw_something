@@ -6,8 +6,6 @@ from ..models import model_user, model_drawing
 @app.route("/game/<int:id>")
 def get_user(id):
 
-    print("NOO")
-
     if "uuid" not in session:
         redirect("/")
 

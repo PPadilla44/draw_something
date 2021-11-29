@@ -45,11 +45,10 @@ def logout():
 def search_user_by_username():
 
     user = model_user.User.get_user_by_username(request.form)
-    print(user)
+
     if not user:
         return jsonify(False)
     
     user = user.user_to_dict()
-    print(user)    
 
     return jsonify(user)

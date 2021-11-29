@@ -78,9 +78,6 @@ window.onload = () => {
         receiver_id = opp.attributes[1].value;
 
 
-        console.log(receiver_id);
-        console.log('SAdsda');
-
         document.getElementById('canvasImg').src = image;
 
         let data = new FormData(myForm)
@@ -105,14 +102,9 @@ window.onload = () => {
     canvas.width = window.innerWidth - 120;
     canvas.height = window.innerHeight - 120;
 
-    
-
     isDisplayed = 
     document.getElementById("start").style.display == "none" 
     ? false : true 
-    console.log(isDisplayed);
-    
-
 
 
     //Mouse movement
@@ -199,11 +191,11 @@ const handleLineWidth = (e) => {
 
     e.deltaY < 0 ?
 
-        context.lineWidth < 50 ? context.lineWidth += 2 : console.log("too high")
+        context.lineWidth < 50 ? context.lineWidth += 2 : ""
 
         :
 
-        context.lineWidth > 0 ? context.lineWidth -= 2 : console.log("too low")
+        context.lineWidth > 0 ? context.lineWidth -= 2 : ""
 
 
     document.getElementById('lineWidth').value = context.lineWidth;

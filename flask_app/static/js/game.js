@@ -64,10 +64,6 @@ const select = (user) => {
     }
 }
 
-const selectGame = (id) => {
-    console.log(id);
-}
-
 const search = (e) => {
     e.preventDefault()
     let showElem = document.getElementById('search-results')
