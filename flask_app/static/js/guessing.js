@@ -112,6 +112,7 @@ const changeGuessBtn = () => {
     guessBtn.innerText = "Leave"
     guessBtn.addEventListener("click", deleteAndLeave)
     guessBtn.style.backgroundColor = "#aa1924"
+    guessBtn.style.color = "white"
     guessBtn.onmouseover = () => guessBtn.style.backgroundColor = "#fc5060";
     guessBtn.onmouseout = () => guessBtn.style.backgroundColor = "#aa1924";
     guessBtn.disabled = true;

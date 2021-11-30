@@ -58,12 +58,12 @@ body {
 }
 
 .select-user {
-  background-color: #313F70;
+  background-color: #212529;
   color: white;
 }
 
 .select-user:hover {
-  background-color: #28345C;
+  background-color: black;
   font-size: larger;
   transition: 0.5s;
 }
@@ -96,9 +96,9 @@ body {
 .dash-drawings h1 {
   width: 100%;
   margin-bottom: 0;
-  border-top: 2px solid black;
-  border-right: 2px solid black;
-  border-left: 2px solid black;
+  border-top: 2px solid #464d53;
+  border-right: 2px solid #464d53;
+  border-left: 2px solid #464d53;
   transition: 0.5s;
 }
 
@@ -108,7 +108,7 @@ body {
   background-color: white;
   max-width: 500px;
   max-height: 300px;
-  border: 2px solid black;
+  border: 2px solid #464d53;
   border-top: none;
   transition: 0.5s;
 }
@@ -127,14 +127,14 @@ a:hover {
 }
 
 .dash-drawings:hover img {
-  border: 2px solid white;
+  border: 2px solid black;
   border-top: none;
   transition: 0.75s;
 }
 .dash-drawings:hover h1 {
-  border-top: 2px solid rgb(255, 255, 255);
-  border-right: 2px solid white;
-  border-left: 2px solid white;
+  border-top: 2px solid black;
+  border-right: 2px solid black;
+  border-left: 2px solid black;
   transition: 0.75s;
 }
 
@@ -198,7 +198,7 @@ a:hover {
 }
 
 #guessBtn:hover {
-  background-color: blue;
+  background-color: rgb(0, 162, 255);
   transition: 0.25s;
 }
 

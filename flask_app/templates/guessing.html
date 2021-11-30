@@ -6,19 +6,22 @@
 
     {% block content %}
         
-    <div id="nav" class="nav bg-dark text-white justify-content-center flex-column">
+    <div id="nav" class="nav bg-dark text-white justify-content-center flex-column navbar">
         <div class="mb-3 mt-3 d-flex justify-content-between container align-items-center">
-            <h1>Hello {{ curUser.username }}!</h1>
-            <div class="d-flex">
-                <a class="btn btn-danger me-4" href="/dashboard">Go Back</a>
-                <a class="btn btn-outline-danger" href="/logout">Logout</a>
+            <a class="btn " href="/dashboard">Go Back</a>
+
+            <div class="imageHolder">
+                <img src="{{ url_for('static', filename='favicons/multicolour-paint-splatter.png') }}" alt="paint splatter">
+                <h1>DRAW IT</h1>
             </div>
+
+            <a class="btn" href="/logout">Logout</a>
         </div>
     </div>
     <div id="guessContainer" class="text-center p-1 d-flex flex-column justify-content-center align-items-center">
         <img src={{drawing.image}} alt="drawing">
     </div>
-    <div class="userGuesses text-center p-1 d-flex flex-column justify-content-center align-items-center">
+    <div class="userGuesses text-center text-light p-1 d-flex flex-column justify-content-center align-items-center">
         <h1 id="guessTitle">Take A Guess!</h1>
         
         <form id="guessForm" class="d-flex flex-column align-items-center">
