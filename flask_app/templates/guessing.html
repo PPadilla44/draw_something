@@ -1,20 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0' crossorigin='anonymous'>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/drawing.css') }}">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
-        rel="stylesheet">
+{% extends 'base.html' %}
 
-    <script type="text/javascript" src="{{ url_for('static', filename='js/guessing.js') }}"></script>
+        {% block header %}
+        <script type="text/javascript" src="{{ url_for('static', filename='js/guessing.js') }}"></script>
+        {% endblock header %}
 
-    <title>Guess</title>
-</head>
-<body>
+    {% block content %}
+        
     <div id="nav" class="nav bg-dark text-white justify-content-center flex-column">
         <div class="mb-3 mt-3 d-flex justify-content-between container align-items-center">
             <h1>Hello {{ curUser.username }}!</h1>
@@ -37,7 +28,5 @@
         <p id="guessText"></p>
 
     </div>
-
-</body>
-
-</html>
+    
+    {% endblock content %}
