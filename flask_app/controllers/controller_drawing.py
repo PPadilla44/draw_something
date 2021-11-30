@@ -45,6 +45,9 @@ def get_drawing():
 @app.route("/game/guess/<id>")
 def guess_drawing(id):
 
+    if "uuid" not in session:
+        return redirect("/register")
+
     drawing = model_drawing.Drawing.get_drawing_by_id({'id': id})
 
     if(drawing['receiver_id'] != session['uuid']):
@@ -62,6 +65,9 @@ def guess_drawing(id):
 
 @app.route("/delete/drawing/<int:id>")
 def delete_drawing(id):
+
+    if "uuid" not in session:
+        return redirect("/register")
     
     drawing = model_drawing.Drawing.get_drawing_by_id({'id': id})
 

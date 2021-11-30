@@ -27,7 +27,10 @@ def show_reg():
 
 @app.route("/dashboard")
 def dashboard():
-    
+    print(session)
+    if "uuid" not in session:
+        return redirect("/register")
+
     context = {
         "curUser" : model_user.User.get_user_by_id( { "id": session["uuid"] } ),
         "userList" : model_user.User.get_all_users_not_self( { "id" : session['uuid'] } ),

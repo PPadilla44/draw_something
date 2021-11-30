@@ -2,6 +2,7 @@ var userList;
 var who;
 var gamesDom;
 var sendBtn;
+var collapseBtn;
 var searchForm;
 var dashTitle;
 
@@ -23,6 +24,7 @@ window.onload = () => {
     userList = document.getElementById("userList")
     who = document.getElementById("who")
     sendBtn = document.getElementById('send-button');
+    collapseBtn = document.getElementById('collapse-btn');
     gamesDom = document.getElementById('games');
     searchForm = document.getElementById('search');
     dashTitle = document.getElementById('dash-title');
@@ -42,7 +44,6 @@ window.onload = () => {
                     <a href="/game/guess/${game.id}" style="cursor: pointer;" class="dash-drawings d-flex align-items-center flex-column rounded bg-secondary">
                         <h1>${game.creator.username}</h1>
                         <img  src=${game.image}>
-
                     <a>
                     `)
             }
@@ -51,10 +52,19 @@ window.onload = () => {
 }
 
 const selectUser = () => {
-    sendBtn.style.display = "none"
-    who.style.display = "block"
-    userList.style.display = "block"
+    sendBtn.style.display = "none";
 
+    collapseBtn.style.display = "block";
+    who.style.display = "block";
+    userList.style.display = "block";
+}
+
+const collapse = () => {
+    sendBtn.style.display = "block";
+
+    collapseBtn.style.display = "none";
+    who.style.display = "none";
+    userList.style.display = "none";
 }
 
 const select = (user) => {

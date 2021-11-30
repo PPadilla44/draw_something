@@ -66,19 +66,20 @@ body
 }
 
 .select-user {
-    background-color: rgb(33, 37, 41);
-    color: white;
+    background-color: #D7EAF9;
+    /* background-color: rgb(33, 37, 41); */
+    color: black;
 }
 
 .select-user:hover {
-    background-color: rgb(108, 117, 125);
+    background-color: #9AAFD6;
+    /* background-color: rgb(108, 117, 125); */
     font-size: larger;
     transition: .5s;
 
 }
 
 .select-user:hover h4 {
-    color: black;
     font-size: 1.7rem;
     font-weight: 700;
     transition: .5s;
