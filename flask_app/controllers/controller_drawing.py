@@ -2,6 +2,7 @@ from logging import log
 from flask_app import app
 from flask import render_template, redirect, request, session, flash, jsonify
 from ..models import model_user, model_drawing
+import random
 
 @app.route("/game/<int:id>")
 def get_user(id):
@@ -9,16 +10,24 @@ def get_user(id):
     if "uuid" not in session:
         redirect("/")
 
-    words = {
-        "dog" : "dog",
-        "cat" : "cat",
-        "fish" : "fish",
-    }
+    import json
+    import os 
+
+    words_loc = os.getcwd() + "/flask_app/static/words/animals.json"
+
+    # Opening JSON file
+    with open(words_loc) as json_file:
+        data = json.load(json_file)
+
+    animal_list = []
+    for x in range(3):
+        if data[random.randint(0, len(data))] not in animal_list:
+            animal_list.append(data[random.randint(0, len(data))].upper())
     
 
     context = {
 
-        "words" : words,
+        "words" : animal_list,
         'user' : model_user.User.get_user_by_id( { "id": id } ),
         'curUser': model_user.User.get_user_by_id( { "id": session['uuid'] } ),
 
