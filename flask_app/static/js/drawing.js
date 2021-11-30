@@ -84,7 +84,7 @@ window.onload = () => {
         
         image = document.getElementById('myCanvas').toDataURL();
 
-        var word = document.getElementById("word").innerHTML
+        var word = document.getElementById("word").innerHTML.toUpperCase()
         var opp = document.getElementById("opp")
         receiver_id = opp.attributes[1].value;
 

@@ -1,7 +1,9 @@
 from flask.json import jsonify
 from flask_app import app, bcrypt
 from flask import render_template, redirect, request, session, flash
-from ..models import model_user
+from ..models import model_user, model_drawing
+import base64
+import os
 
 @app.route('/process-register', methods=['POST'])
 def register():
@@ -20,6 +22,23 @@ def register():
     }
 
     uuid = model_user.User.save(data)
+
+    
+    cwd = os.getcwd()
+    image_loc = f"{cwd}\\flask_app\static\images\Beaver.png"
+    
+    with open(image_loc, 'rb') as fp:
+        encoded_string = base64.b64encode(fp.read())
+
+    image_data = {
+        "image": "data:image/png;base64," + encoded_string.decode("utf-8"),
+        "word": "BEAVER",
+        "creator_id": uuid,
+        "receiver_id": uuid,
+    }
+
+    model_drawing.Drawing.save(image_data)
+
     session['uuid'] = uuid
 
     return redirect(f'/dashboard')

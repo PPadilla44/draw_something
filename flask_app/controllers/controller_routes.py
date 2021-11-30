@@ -1,10 +1,10 @@
-from json import encoder
 from flask.globals import session
 from flask_app import app
 from flask import jsonify, redirect, render_template
 
-from flask_app.controllers.controller_users import login
 from ..models import model_user, model_drawing
+
+
 
 
 @app.route('/')
@@ -27,7 +27,7 @@ def show_reg():
 
 @app.route("/dashboard")
 def dashboard():
-    print(session)
+
     if "uuid" not in session:
         return redirect("/register")
 

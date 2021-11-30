@@ -62,7 +62,7 @@ window.onload = (e) => {
     guessForm.onsubmit = (e) => {
 
         e.preventDefault()
-        let guess = guessForm[0].value;
+        let guess = String(guessForm[0].value).toUpperCase();
 
         if (attempts <= 0 && attempts !== null) {
             incorrectText();
