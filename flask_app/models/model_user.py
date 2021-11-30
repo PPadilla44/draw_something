@@ -63,14 +63,10 @@ class User:
             flash(u'Password must be at least 8 characters', 'password')
             is_valid = False
 
-        # Check for at least 1 digit
+        # Check for at least 1 digit and capitol letter
         if not re.search(PASSWORD_REGEX, user['password']):
             flash(u'Password does not contain necessary components', 'password')
             is_valid = False
-
-        # if not re.match(r'\?=.*[A-Z]*', user['password']):
-        #     flash(u'Password must contain at least 1 capitol letter','password')
-        #     is_valid = False
 
         if user['password'] != request.form['confirm']:
             flash(u'Passwords do not match', 'confirm')

@@ -1,263 +1,285 @@
-body
-{
-    margin: 0px;
-    margin: 0px;
-    font-family: "Open Sans", sans-serif;
-    background-color: #9AAFD6;
+body {
+  margin: 0px;
+  margin: 0px;
+  /* font-family: "Open Sans", sans-serif; */
+  font-family: "Knewave", cursive;
+  text-shadow: 6px 6px 8px rgb(54, 54, 54);
+
+  background-color: #9aafd6;
 }
 
-#myCanvas
-{
-    background-color: #ddd;
-    border: 1px solid black;
-    width: 100%;
+#myCanvas {
+  background-color: #ddd;
+  border: 1px solid black;
+  width: 100%;
 }
 
-
-#canvasImg
-{
-    width: 75%;
-    height: 75%
+#canvasImg {
+  width: 75%;
+  height: 75%;
 }
 
 #tools {
-    display: flex;
-    position: absolute;
-    bottom: 0;
-    width: calc(100% - 150px);
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  width: calc(100% - 150px);
+  align-items: center;
+  justify-content: space-between;
 }
 
 .interact {
-    display: flex;
-    width: 50%;
-    justify-content: space-between;
+  display: flex;
+  width: 50%;
+  justify-content: space-between;
 }
-
-
 
 .form {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 200px;
 }
 
-
-
 .main {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    padding: 0 60px;
-    background-color: #9AAFD6;
+  width: 100vw;
+  height: 100vh;
+  padding: 0 60px;
+  background-color: #9aafd6;
 }
 
 #canvas {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    align-items: center;
-    justify-content: center;
-
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
 }
 
 .select-user {
-    background-color: #D7EAF9;
-    /* background-color: rgb(33, 37, 41); */
-    color: black;
+  background-color: #313F70;
+  color: white;
 }
 
 .select-user:hover {
-    background-color: #9AAFD6;
-    /* background-color: rgb(108, 117, 125); */
-    font-size: larger;
-    transition: .5s;
-
+  background-color: #322470;
+  font-size: larger;
+  transition: 0.5s;
 }
 
 .select-user:hover h4 {
-    font-size: 1.7rem;
-    font-weight: 700;
-    transition: .5s;
+  font-size: 1.7rem;
+  font-weight: 700;
+  transition: 0.5s;
 }
 
 #gamesHolder {
-    height: 100%;
+  height: 100%;
 }
-
-
 
 .dash-drawings {
-    width: fit-content;
-
+  width: fit-content;
 }
-.dash-drawings h1{
-    width: 100%;
-    margin-bottom: 0;
-    border-top: 2px solid black;
-    border-right: 2px solid black;
-    border-left: 2px solid black;
-    transition: .5s;
+.dash-drawings h1 {
+  width: 100%;
+  margin-bottom: 0;
+  border-top: 2px solid black;
+  border-right: 2px solid black;
+  border-left: 2px solid black;
+  transition: 0.5s;
 }
 
 .dash-drawings img {
-    width: 100%;
-    height: 100%;
-    background-color: white;
-    max-width: 500px;
-    max-height: 300px;
-    border: 2px solid black;
-    border-top: none;
-    transition: .5s;
-
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  max-width: 500px;
+  max-height: 300px;
+  border: 2px solid black;
+  border-top: none;
+  transition: 0.5s;
 }
 
 .guessTitle {
-    color: white;
-    font-size: 3rem;
+  color: white;
+  font-size: 3rem;
 }
 
-
-@media screen and (max-width: 760px) {
-    #tools label{
-        display: none;
-    }
-
-    .interact {
-        flex-direction: column;
-        
-    }
-
-}
-
-a{
-    color: inherit;
-    text-decoration: none;
-
+a {
+  color: inherit;
+  text-decoration: none;
 }
 a:hover {
-    color: inherit;
-
+  color: inherit;
 }
 
-.dash-drawings:hover img{
-    border: 2px solid white;
-    border-top: none;   
-    transition: .75s;
+.dash-drawings:hover img {
+  border: 2px solid white;
+  border-top: none;
+  transition: 0.75s;
 }
-.dash-drawings:hover h1{ 
-    border-top: 2px solid rgb(255, 255, 255);
-    border-right: 2px solid white;
-    border-left: 2px solid white;
-    transition: .75s;
+.dash-drawings:hover h1 {
+  border-top: 2px solid rgb(255, 255, 255);
+  border-right: 2px solid white;
+  border-left: 2px solid white;
+  transition: 0.75s;
 }
 
 #guessContainer {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 #guessContainer img {
-    border: 2px solid black;
-    width: 100%;
-    height: 100%;
-    max-width: 1200px;
-    max-height: 600px;
-    background-color: white;
+  border: 2px solid black;
+  width: 100%;
+  height: 100%;
+  max-width: 1200px;
+  max-height: 600px;
+  background-color: white;
 }
 
 #guessTitle {
-    font-size: 3rem;
+  font-size: 3rem;
 }
 
 #guessText {
-    font-size: 1.5rem;
+  font-size: 1.5rem;
 }
 #guessForm {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 .userGuesses {
-    height: 100%;
+  height: 100%;
 }
 
-
-#guessForm input, #guessBtn{
-    outline: none;
-    border: none;
-    border-radius: 10px;
-    box-shadow: 0px 2px 10px 2px black;
-    background-color: transparent;
-    font-size: 2rem;
-    text-align: center;
-    font-family: 'Courier New', Courier, monospace;
-    font-weight: 800;
-    transition: .25s;
+#guessForm input,
+#guessBtn {
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0px 2px 10px 2px black;
+  background-color: transparent;
+  font-size: 2rem;
+  text-align: center;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 800;
+  transition: 0.25s;
 }
 
 #guessBtn {
-    margin: .5rem 0;
-    box-shadow: none;
-    border: 1px solid black;
-    font-family: inherit;
-    font-weight: 500;
-    background-color: skyblue;
-    transition: .25s;
+  margin: 0.5rem 0;
+  box-shadow: none;
+  border: 1px solid black;
+  font-family: inherit;
+  font-weight: 500;
+  background-color: skyblue;
+  transition: 0.25s;
 }
 
-#guessForm input:hover  {
-    box-shadow: 0px 2px 20px 2px rgb(66, 66, 66);
-    transition: .25s;
-
+#guessForm input:hover {
+  box-shadow: 0px 2px 20px 2px rgb(66, 66, 66);
+  transition: 0.25s;
 }
 
 #guessBtn:hover {
-    background-color: blue;
-    transition: .25s;
+  background-color: blue;
+  transition: 0.25s;
 }
 
 .loginHolder {
-    width: 100%;
-    max-width: 900px;
-    height: 100%;
-    max-height: 800px;
+  width: 100%;
+  max-width: 900px;
+  height: 100%;
+  max-height: 800px;
 }
 
 .loginHeader {
-    color: white;
-    align-items: center;
+  color: white;
+  align-items: center;
 }
 
-
 .loginHeader h1 {
-    margin: 0 10px;
-    font-size: 2.5rem;
-    white-space: nowrap;
-
+  margin: 0 10px;
+  font-size: 2.5rem;
+  white-space: nowrap;
 }
 
 .loginHeader hr {
-    opacity: 100%;
-    border-radius: 50px;
+  opacity: 100%;
+  border-radius: 50px;
 }
 
 .login {
-    height: 100%;
-    width: 100%;    
+  height: 100%;
+  width: 100%;
 }
 
 .login input {
-    outline: none;
-    border: none;
-    border-radius: 5px;
-    height: 35px;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  height: 35px;
 }
 
 .errors {
-    width: 80%;
+  width: 80%;
+}
+
+
+
+.imageHolder {
+  width: 100%;
+  max-width: 900px;
+  height: 100%;
+  max-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.imageHolder h1 {
+  position: absolute;
+  top: 55px;
+  font-size: 6rem;
+  margin: 0;
+  font-family: "Knewave", cursive;
+  color: white;
+}
+
+.imageHolder img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.navbar a{
+    margin: 0 80px ;
+}
+
+.navbar .imageHolder {
+    max-height: 55px;
+    max-width: 255px;
+}
+.navbar .imageHolder h1{
+    font-size: 2.75rem;
+    top: -0px;
+}
+
+@media screen and (max-width: 760px) {
+  #tools label {
+    display: none;
+  }
+
+  .interact {
+    flex-direction: column;
+  }
+  .imageHolder h1 {
+    font-size: 4rem;
+    top: 80px;
+  }
 }

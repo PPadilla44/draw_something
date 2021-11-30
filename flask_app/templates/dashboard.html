@@ -7,16 +7,24 @@
 
 {% block content %}
     
-<div style="background-color: #D7EAF9" class="nav text-white justify-content-center flex-column">
+<div style="background-color: #313F70" class="nav text-white justify-content-center flex-column position-relative">
 
-    <div class="mb-3 text-dark mt-3 d-flex justify-content-between container align-items-center">
-        <h1>Hello {{ curUser.username }}!</h1>
-        <a class="btn btn-outline-danger" href="/logout">Logout</a>
+    <div class="mb-3 mt-3 container justify-content navbar">
+        <h1>Hello {{ curUser.username }}!</h1> 
+
+
+        <div class="imageHolder">
+            <img src="../static/favicons/multicolour-paint-splatter.png" alt="paint-splatter">
+            <h1>DRAW IT</h1>
+        </div>
+
+
+        <a class="btn btn-outline-danger" style="text-shadow: none;" href="/logout">Logout</a>
     </div>
-    <button id="send-button" class="btn btn-outline-info text-white" onclick="selectUser()">
-        <h3 class="text-dark">Send a drawing!</h3>
+    <button id="send-button" class="btn select-user list-group-item border-secondary" style="z-index: 2;" onclick="selectUser()">
+        <h3 class="text-light" style="text-shadow: 6px 6px 8px rgb(54, 54, 54) ;">Send a drawing!</h3>
     </button>
-    <h2 id="who" class="text-dark mt-2 text-center" style="display: none">Who Would You Like To Send To?</h2>
+    <h2 id="who" class="mt-3 mb-4 text-center" style="display: none">Who Would You Like To Send To?</h2>
     <button id="collapse-btn" class="btn btn-outline-info" style="display: none; width: fit-content; align-self: center;" onclick="collapse()">Cancel</button>
     <ul class="list-group text-center" style="display: none; cursor: pointer;" id="userList">
         <form id="search" class="form-inline d-flex container-sm mt-3 mb-3 ">
@@ -34,7 +42,7 @@
         {% if userList %}
         {% for user in userList %}
         <li class="select-user list-group-item border-secondary" onclick="select(this)">
-            <h4>{{ user.username }}</h4>
+            <h4 class="text-light">{{ user.username }}</h4>
             <input type="hidden" name="user" value="{{user.id}}">
         </li>
         {% endfor %}
