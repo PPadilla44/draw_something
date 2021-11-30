@@ -61,8 +61,9 @@ window.onload = () => {
 
     //Color
     document.getElementById('colorChange').addEventListener('change', function () {
-        context.strokeStyle = document.getElementById('colorChange').value;
-        context.fillSyle = document.getElementById('colorChange').value;
+        let color = document.getElementById('colorChange').value;
+        context.strokeStyle = color;
+        context.fillSyle = color;
     }, false);
 
     //Send
