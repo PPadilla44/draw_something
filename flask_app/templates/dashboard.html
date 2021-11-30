@@ -19,19 +19,19 @@
         </div>
 
 
-        <a class="btn btn-outline-danger" style="text-shadow: none;" href="/logout">Logout</a>
+        <a class="btn" href="/logout">Logout</a>
     </div>
     <button id="send-button" class="btn select-user list-group-item border-secondary" style="z-index: 2;" onclick="selectUser()">
         <h3 class="text-light" style="text-shadow: 6px 6px 8px rgb(54, 54, 54) ;">Send a drawing!</h3>
     </button>
     <h2 id="who" class="mt-3 mb-4 text-center" style="display: none">Who Would You Like To Send To?</h2>
-    <button id="collapse-btn" class="btn btn-outline-info" style="display: none; width: fit-content; align-self: center;" onclick="collapse()">Cancel</button>
+    <button id="collapse-btn" class="btn" onclick="collapse()">Cancel</button>
     <ul class="list-group text-center" style="display: none; cursor: pointer;" id="userList">
         <form id="search" class="form-inline d-flex container-sm mt-3 mb-3 ">
             <input name="username" class="me-2 form-control mr-sm-2" type="search" placeholder="Search by user name"
                 aria-label="Search">
             <input type="hidden" name="curUser" value="{{curUser.id}}">
-            <button class="ms-2 btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+            <button class="ms-2 btn btn-primary my-2 my-sm-0" type="submit">Search</button>
         </form>
 
         <li onclick="select(this)" style="list-style: none;" class="select-user" id="search-results">

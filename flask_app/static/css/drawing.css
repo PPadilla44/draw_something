@@ -6,6 +6,7 @@ body {
   text-shadow: 6px 6px 8px rgb(54, 54, 54);
 
   background-color: #9aafd6;
+  letter-spacing: .2rem;
 }
 
 #myCanvas {
@@ -62,7 +63,7 @@ body {
 }
 
 .select-user:hover {
-  background-color: #322470;
+  background-color: #28345C;
   font-size: larger;
   transition: 0.5s;
 }
@@ -71,6 +72,18 @@ body {
   font-size: 1.7rem;
   font-weight: 700;
   transition: 0.5s;
+}
+
+#collapse-btn {
+    background-color: #5976cc;
+    color: white;
+    display: none; 
+    width: fit-content; 
+    align-self: center;
+}
+
+#collapse-btn:hover {
+    background-color: #4a63af ;
 }
 
 #gamesHolder {
@@ -259,6 +272,14 @@ a:hover {
 
 .navbar a{
     margin: 0 80px ;
+    background-color: #9E2000; 
+    color: white;
+    text-shadow: none;
+}
+
+.navbar a:hover{
+    background-color: #781800;
+    color: white;
 }
 
 .navbar .imageHolder {
@@ -269,6 +290,8 @@ a:hover {
     font-size: 2.75rem;
     top: -0px;
 }
+
+
 
 @media screen and (max-width: 760px) {
   #tools label {
