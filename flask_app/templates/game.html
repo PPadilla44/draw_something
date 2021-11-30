@@ -6,8 +6,8 @@
     {% endblock header %}
 
     {% block content %}
-        
-    <div style="background-color: #313F70;" id="nav" class="nav justify-content-center flex-column">
+
+    <div id="nav" class="nav justify-content-center flex-column bg-dark">
 
         <div class="mb-3 mt-3 d-flex text-light justify-content-between container align-items-center navbar">
             <a class="btn" href="/dashboard">Go Back</a>
@@ -23,7 +23,7 @@
 
     </div>
 
-    <div id="gamesHolder" style="background-color: #313F70;" class="d-flex flex-wrap text-center flex-column">
+    <div id="gamesHolder" class="d-flex flex-wrap text-center flex-column bg-dark">
 
         <div id="choices" class="text-light">
             <h1 id="opp" value="{{ user.id }}" class="guessTitle mb-5" >Opponent: {{ user.username }}</h1>

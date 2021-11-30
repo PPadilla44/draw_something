@@ -73,7 +73,17 @@ window.onload = () => {
         document.getElementById('myCanvas').style.display = "none";
         document.getElementById('tools').style.display = "none";
 
-        var image = document.getElementById('myCanvas').toDataURL();
+        var image = document.getElementById('myCanvas')
+        contextImage = image.context;
+        context.save();
+        context.globalCompositeOperation = 'destination-over';
+        context.fillStyle = "white";
+        context.fillRect(0, 0, canvas.width, canvas.height);      
+        context.restore();
+        
+        
+        image = document.getElementById('myCanvas').toDataURL();
+
         var word = document.getElementById("word").innerHTML
         var opp = document.getElementById("opp")
         receiver_id = opp.attributes[1].value;
