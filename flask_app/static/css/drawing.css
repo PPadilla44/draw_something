@@ -6,7 +6,7 @@ body {
   text-shadow: 6px 6px 8px rgb(54, 54, 54);
 
   background-color: #9aafd6;
-  letter-spacing: .2rem;
+  letter-spacing: 0.2rem;
 }
 
 #myCanvas {
@@ -75,15 +75,15 @@ body {
 }
 
 #collapse-btn {
-    background-color: #5976cc;
-    color: white;
-    display: none; 
-    width: fit-content; 
-    align-self: center;
+  background-color: #5976cc;
+  color: white;
+  display: none;
+  width: fit-content;
+  align-self: center;
 }
 
 #collapse-btn:hover {
-    background-color: #4a63af ;
+  background-color: #4a63af;
 }
 
 #gamesHolder {
@@ -241,14 +241,12 @@ a:hover {
   width: 80%;
 }
 
-
-
 .imageHolder {
   width: 100%;
   max-width: 900px;
-  min-width: 400px;
   height: 100%;
   max-height: 300px;
+  min-width: 400px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -265,35 +263,77 @@ a:hover {
   white-space: nowrap;
 }
 
-.imageHolder img {
+.index .imageHolder img {
   width: auto;
   height: auto;
   max-width: 100%;
   max-height: 100%;
 }
 
-.navbar a{
-    margin: 0 80px ;
-    background-color: #9E2000; 
-    color: white;
-    text-shadow: none;
+.nav-btnHolder {
+  max-width: 300px;
+  width: 100%;
+  text-align: center;
+  min-width: none;
 }
 
-.navbar a:hover{
-    background-color: #781800;
-    color: white;
+.navbar {
+  justify-content: space-between;
+  flex-wrap: nowrap;
+}
+
+.navbar a {
+  background-color: #9e2000;
+  color: white;
+  text-shadow: none;
+  width: 100%;
+  max-width: fit-content;
+}
+
+.navbar a:hover {
+  background-color: #781800;
+  color: white;
 }
 
 .navbar .imageHolder {
-    max-height: 55px;
-    max-width: 255px;
+  max-height: 55px;
+  max-width: 400px;
+  min-width: inherit;
 }
-.navbar .imageHolder h1{
+
+.navbar .imageHolder h1 {
+  font-size: 5rem;
+  top: -50px;
+}
+
+.navbar .imageHolder img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.names {
+  width: 100%;
+  max-width: 300px;
+  min-width: none;
+  white-space: nowrap;
+}
+
+.guess-nav {
+  min-height: 205px;
+}
+
+@media screen and (max-width: 1100px) {
+  .navbar .imageHolder h1 {
+    font-size: 3rem;
+    top: -20px;
+  }
+  .guess-nav .imageHolder h1 {
     font-size: 5rem;
-    top: -50px;
+    top: -40px;
+  }
 }
-
-
 
 @media screen and (max-width: 770px) {
   #tools label {
@@ -303,52 +343,170 @@ a:hover {
   .interact {
     flex-direction: column;
   }
-  .navbar {
-    flex-direction: column;
-    justify-content: space-between;
-    height: 200px;
-  }
-  .names h1:first-of-type {
-    display: none;
-  }
-  .navbar .imageHolder {
-    min-width: 200px;
-    min-height: 200px;
-  }
-  .navbar a {
-    margin: 0;
+
+  .names h1 {
+    font-size: 1.25rem;
   }
 
-  .imageHolder h1 {
+  .index .imageHolder h1 {
     font-size: 4rem;
     top: 80px;
   }
 
-  .navbar .imageHolder h1{
-    font-size: 2rem;
-    top: 80px;
-}
+  .navbar .imageHolder h1 {
+    top: -10px;
+    font-size: 2.25rem;
+  }
+
+  .guess-nav .imageHolder h1 {
+    font-size: 5rem;
+    top: -40px;
+  }
 }
 
 @media screen and (max-width: 500px) {
+
+  .names {
+    width: fit-content;
+  }
+  .names h1 {
+    font-size: .75rem;
+    width: fit-content;
+  }
+
+  .names h1:first-of-type {
+    display: none;
+  }
+
+  .navbar .imageHolder h1 {
+    top: 0px;
+    font-size: 1.75rem;
+  }
 
   .index .imageHolder {
     max-width: inherit;
     min-width: inherit;
   }
+
+  .nav-btnHolder {
+    max-width: 55px;
+    text-align: center;
+  }
+  .nav-btnHolder a{
+    font-size: .50rem;
+    max-width: 55px;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+
+  }
+
   .index {
     padding: 0;
   }
 
-  .index form{
+  .index form {
     width: 80%;
     align-self: center;
   }
 
   .index form p {
-    font-size: .70rem;
+    font-size: 0.7rem;
     /* white-space: nowrap; */
     text-align: center;
   }
-}
 
+  #dash-title {
+    font-size: 1.4rem;
+  }
+
+  #who {
+    font-size: .9rem;
+  }
+
+  #collapse-btn {
+    font-size: .75rem;
+    max-width: 100px;
+    text-align: center;
+    padding: .25rem;
+  }
+
+  #search input {
+    height: 2rem;
+  }
+
+  #search button {
+    font-size: .75rem;
+    max-width: 100px;
+    text-align: center;
+    padding: .25rem;
+    margin: 0 !important;
+  }
+
+  .select-user h4 {
+    margin: 0;
+    font-size: 1rem;
+  }
+  
+  .select-user:hover {
+    background-color: black;
+    font-size: larger;
+    transition: 0.5s;
+  }
+  
+  .select-user:hover h4 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    transition: 0.5s;
+  }
+
+  .navbar a {
+    font-size: .50rem;
+    max-width: 55px;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+  }
+
+  .guess-nav  {
+    min-height: 50px;
+  }
+  .guess-nav .imageHolder {
+    max-width: 200px;
+  }
+
+  #guessTitle {
+    font-size: .75rem;
+    white-space: nowrap;
+  }
+
+  #guessForm input {
+    width: 90%;
+    font-size: 1.75rem;
+  }
+
+  #opp {
+    font-size: 2rem;
+  }
+
+  #hello {
+    font-size: 1.5rem;
+  }
+
+  .words-holder {
+    background-color: yellow !important;
+    height: calc(100vh - 103px) !important;
+  }
+
+  #choices {
+  }
+
+  .choosing-list {
+    height: 100%;
+    color: red;
+  }
+
+  .choosing-list li {
+  }
+
+}

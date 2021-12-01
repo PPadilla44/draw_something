@@ -7,9 +7,9 @@
 
     {% block content %}
 
-    <div id="nav" class="nav justify-content-center flex-column bg-dark">
+    <div id="nav" class="nav justify-content-center flex-column bg-dark nav-holer">
 
-        <div class="mb-3 mt-3 d-flex text-light justify-content-between container align-items-center navbar">
+        <div class="mb-3 mt-3 d-flex text-light justify-content-between container align-items-center guess-nav navbar">
             <a class="btn" href="/dashboard">Go Back</a>
 
 
@@ -23,13 +23,13 @@
 
     </div>
 
-    <div id="gamesHolder" class="d-flex flex-wrap text-center flex-column bg-dark">
+    <div id="gamesHolder" class="d-flex flex-wrap text-center flex-column bg-dark words-holder">
 
         <div id="choices" class="text-light">
             <h1 id="opp" value="{{ user.id }}" class="guessTitle mb-5" >Opponent: {{ user.username }}</h1>
             <h1 id="hello">Please choose a word you would like to draw!</h1>
 
-            <ul class="list-group text-center mt-4" style="cursor: pointer;" id="userList">
+            <ul class="list-group text-center mt-4 choosing-list" style="cursor: pointer;" id="userList">
 
                 {% for word in words %}
                 <li class="select-user list-group-item border-secondary" onclick="choose('{{word}}')">
