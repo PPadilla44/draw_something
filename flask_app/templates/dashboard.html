@@ -6,11 +6,14 @@
 {% endblock header %}
 
 {% block content %}
-    
+
 <div class="nav text-white justify-content-center flex-column position-relative bg-dark">
 
     <div class="mb-3 mt-3 container justify-content navbar">
-        <h1>Hello {{ curUser.username }}!</h1> 
+        <div class="names">
+            <h1>Hello {{ curUser.username }}!</h1>
+            <h1 id="points">{{ curUser.points }}</h1>
+        </div>
 
 
         <div class="imageHolder">
@@ -21,7 +24,8 @@
 
         <a class="btn" href="/logout">Logout</a>
     </div>
-    <button id="send-button" class="btn select-user list-group-item border-secondary" style="z-index: 2;" onclick="selectUser()">
+    <button id="send-button" class="btn select-user list-group-item border-secondary" style="z-index: 2;"
+        onclick="selectUser()">
         <h3 class="text-light" style="text-shadow: 6px 6px 8px rgb(54, 54, 54) ;">Send a drawing!</h3>
     </button>
     <h2 id="who" class="mt-3 mb-4 text-center" style="display: none">Who Would You Like To Send To?</h2>
@@ -61,5 +65,40 @@
     </div>
 
 </div>
+
+<script>
+    const colors = ["#FF873B", "#FFD148", "#9FF263", "#40B7F9", "#FE1DB2", "#FF0D4B"]
+    
+    updatePoints()
+
+
+    function updatePoints(addPoints = 0) {
+
+        var pointsElem = document.getElementById("points");
+
+        if (addPoints > 0) {
+            pointsElem.innerText = addPoints;
+        }
+
+        let pointsNum = "POINTS: " + pointsElem.innerText;
+        pointsElem.innerText = ""
+
+        let j = 0;
+        for (let i = 0; i < pointsNum.length; i++) {
+            let num = pointsNum[i];
+            let color = colors[j]
+            j++;
+
+            let span = `<span style="color: ${color}">${num}<span>`
+            pointsElem.innerHTML += span
+            if (j === color.length - 1) {
+                j = 0
+            }
+
+        }
+        
+    }
+
+</script>
 
 {% endblock content %}

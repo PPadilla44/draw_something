@@ -15,6 +15,7 @@ class User:
         self.password = data['password']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
+        self.points = data['points']
         self.drawings = []
 
     @classmethod
@@ -48,6 +49,11 @@ class User:
     def save(cls, data):
         query = "INSERT INTO users (username, password) \
         VALUES (%(username)s, %(password)s);"
+        return connectToMySQL(DATABASE).query_db(query, data)
+
+    @classmethod
+    def updatePoints(cls, data):
+        query = "UPDATE users SET points=%(points)s where id = %(id)s"
         return connectToMySQL(DATABASE).query_db(query, data)
 
     @staticmethod

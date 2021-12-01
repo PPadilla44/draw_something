@@ -246,6 +246,7 @@ a:hover {
 .imageHolder {
   width: 100%;
   max-width: 900px;
+  min-width: 400px;
   height: 100%;
   max-height: 300px;
   display: flex;
@@ -261,6 +262,7 @@ a:hover {
   margin: 0;
   font-family: "Knewave", cursive;
   color: white;
+  white-space: nowrap;
 }
 
 .imageHolder img {
@@ -287,13 +289,13 @@ a:hover {
     max-width: 255px;
 }
 .navbar .imageHolder h1{
-    font-size: 2.75rem;
-    top: -0px;
+    font-size: 5rem;
+    top: -50px;
 }
 
 
 
-@media screen and (max-width: 760px) {
+@media screen and (max-width: 770px) {
   #tools label {
     display: none;
   }
@@ -301,8 +303,52 @@ a:hover {
   .interact {
     flex-direction: column;
   }
+  .navbar {
+    flex-direction: column;
+    justify-content: space-between;
+    height: 200px;
+  }
+  .names h1:first-of-type {
+    display: none;
+  }
+  .navbar .imageHolder {
+    min-width: 200px;
+    min-height: 200px;
+  }
+  .navbar a {
+    margin: 0;
+  }
+
   .imageHolder h1 {
     font-size: 4rem;
     top: 80px;
   }
+
+  .navbar .imageHolder h1{
+    font-size: 2rem;
+    top: 80px;
 }
+}
+
+@media screen and (max-width: 500px) {
+
+  .index .imageHolder {
+    max-width: inherit;
+    min-width: inherit;
+  }
+  .index {
+    padding: 0;
+  }
+
+  .index form{
+    width: 80%;
+    align-self: center;
+  }
+
+  .index form p {
+    font-size: .70rem;
+    /* white-space: nowrap; */
+    text-align: center;
+  }
+}
+

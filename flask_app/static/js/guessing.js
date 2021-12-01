@@ -120,10 +120,11 @@ const changeGuessBtn = () => {
 }
 
 const deleteAndLeave = () => {
-    localStorage.removeItem("correct")
-    localStorage.removeItem("attempts")
+
     localStorage.removeItem("gameId")
+
     location.href = `/delete/drawing/${id}`
 }
+
 
 

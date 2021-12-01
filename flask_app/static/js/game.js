@@ -5,15 +5,46 @@ var sendBtn;
 var collapseBtn;
 var searchForm;
 var dashTitle;
+var curUser;
+
+
+const pointsCalc = {
+    "1" : 5,
+    "2" : 10,
+    "3" : 15,
+    "4" : 30,
+    "5" : 50,
+}
+
+const addPoints = (attempts) => {
+
+    var pointsElem = document.getElementById("points");
+
+    let oldPoints = String(pointsElem.innerText).slice(8)
+
+
+    let points = pointsCalc[attempts] + Number(oldPoints);
+    
+    let id = new FormData(searchForm).get("curUser");
+    
+    let data = new FormData()
+    data.append("id", id);
+    data.append("points", points);
+
+    fetch("http://localhost:5500/add-points", { method: "POST", body: data })
+    .then(res => {
+        updatePoints(points)
+    })
+    .catch(err => console.log(err))
+}
+
 
 let id = localStorage.getItem("gameId") 
-if (id) {
-    localStorage.removeItem("attempts")
-    localStorage.removeItem("correct")
-    localStorage.removeItem("gameId")
-    
-    location.href = `/delete/drawing/${id}`
-}
+let correct = localStorage.getItem("correct");
+
+
+
+
 
 localStorage.removeItem("word")
 
@@ -28,6 +59,28 @@ window.onload = () => {
     gamesDom = document.getElementById('games');
     searchForm = document.getElementById('search');
     dashTitle = document.getElementById('dash-title');
+
+    if(correct) {
+        addPoints(localStorage.getItem("attempts"));
+        localStorage.removeItem("attempts")
+        localStorage.removeItem("correct")
+        localStorage.removeItem("gameId")
+
+    }
+
+    if (id) {
+        localStorage.removeItem("attempts")
+        localStorage.removeItem("correct")
+        localStorage.removeItem("gameId")
+        
+        location.href = `/delete/drawing/${id}`
+    }
+
+    localStorage.removeItem("attempts")
+    localStorage.removeItem("correct")
+    localStorage.removeItem("gameId")
+
+
 
     searchForm.onsubmit = (e) => search(e);
 
@@ -76,7 +129,7 @@ const select = (user) => {
 
 const search = (e) => {
     e.preventDefault()
-    let showElem = document.getElementById('search-results')
+    showElem = document.getElementById('search-results')
 
 
     let formData = new FormData(searchForm);
@@ -120,3 +173,4 @@ const search = (e) => {
 
 
 }
+

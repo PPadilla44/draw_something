@@ -71,3 +71,8 @@ def search_user_by_username():
     user = user.user_to_dict()
 
     return jsonify(user)
+
+@app.route("/add-points", methods=["POST"])
+def add_points():
+    model_user.User.updatePoints(request.form)
+    return jsonify(msg="SUCCESS")
