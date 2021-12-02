@@ -38,7 +38,7 @@ class Drawing:
     def get_all_drawings_by_receiver_id(cls, data):
         query = "SELECT * FROM drawings WHERE receiver_id = %(receiver_id)s;"
         results = connectToMySQL(DATABASE).query_db(query,data)
-        print(results)
+
         if not results:
             return False
         drawings = []
