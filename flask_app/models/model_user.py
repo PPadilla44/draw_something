@@ -46,6 +46,17 @@ class User:
         return users
 
     @classmethod
+    def get_all_users(cls):
+        query = "SELECT * FROM users;"
+        results = connectToMySQL(DATABASE).query_db(query)
+        if len(results) < 1:
+            return False
+        users = []
+        for user in results:
+            users.append(cls(user))
+        return users
+
+    @classmethod
     def save(cls, data):
         query = "INSERT INTO users (username, password) \
         VALUES (%(username)s, %(password)s);"

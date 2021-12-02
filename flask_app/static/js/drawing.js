@@ -97,7 +97,7 @@ window.onload = () => {
         data.append("word", word);
         data.append("receiver_id", receiver_id);
 
-        fetch("http://localhost:5500/send/drawing", { method: "POST", body: data })
+        fetch("http://localhost:5000/send/drawing", { method: "POST", body: data })
             .then(res => {
                 localStorage.removeItem('word')
                 location.href = "/dashboard"

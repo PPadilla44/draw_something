@@ -31,7 +31,7 @@ const addPoints = (attempts) => {
     data.append("id", id);
     data.append("points", points);
 
-    fetch("http://localhost:5500/add-points", { method: "POST", body: data })
+    fetch("http://localhost:5000/add-points", { method: "POST", body: data })
     .then(res => {
         updatePoints(points)
     })
@@ -85,7 +85,7 @@ window.onload = () => {
     searchForm.onsubmit = (e) => search(e);
 
 
-    fetch('http://localhost:5500/get_images')
+    fetch('http://localhost:5000/get_images')
         .then(res => res.json())
         .then(res => res.games)
         .then(games => {

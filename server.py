@@ -8,10 +8,10 @@ from flask_app.config.mysqlconnection import connectToMySQL
 from livereload import Server
 
 if __name__ == "__main__":
-    app.debug = True
+    # app.debug = True
 
-    server = Server(app.wsgi_app)
-    server.serve()
+    # server = Server(app.wsgi_app)
+    # server.serve()
 
 
-    # app.run(debug=True, use_reloader=True)
+    app.run(debug=True, use_reloader=True)

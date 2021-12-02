@@ -76,3 +76,41 @@ def search_user_by_username():
 def add_points():
     model_user.User.updatePoints(request.form)
     return jsonify(msg="SUCCESS")
+
+
+@app.route('/skip-login', methods=['POST'])
+def skip_login():
+
+    all_users = model_user.User.get_all_users()
+    num = len(all_users)
+    username = f"Guest{num}"
+
+    hashy = bcrypt.generate_password_hash(username)
+
+
+    data = {
+        'username': username,
+        'password': hashy,
+    }
+
+    uuid = model_user.User.save(data)
+
+    
+    cwd = os.getcwd()
+    image_loc = f"{cwd}\\flask_app\static\images\Beaver.png"
+    
+    with open(image_loc, 'rb') as fp:
+        encoded_string = base64.b64encode(fp.read())
+
+    image_data = {
+        "image": "data:image/png;base64," + encoded_string.decode("utf-8"),
+        "word": "BEAVER",
+        "creator_id": uuid,
+        "receiver_id": uuid,
+    }
+
+    model_drawing.Drawing.save(image_data)
+
+    session['uuid'] = uuid
+
+    return redirect(f'/dashboard')
