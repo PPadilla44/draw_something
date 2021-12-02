@@ -77,7 +77,7 @@ window.onload = () => {
         contextImage = image.context;
         context.save();
         context.globalCompositeOperation = 'destination-over';
-        context.fillStyle = "white";
+        context.fillStyle = "#ddd";
         context.fillRect(0, 0, canvas.width, canvas.height);      
         context.restore();
         

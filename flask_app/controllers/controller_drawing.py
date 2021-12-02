@@ -22,7 +22,7 @@ def get_user(id):
     animal_list = []
     for x in range(3):
         if data[random.randint(0, len(data) - 1)] not in animal_list:
-            animal_list.append(data[random.randint(0, len(data))].upper())
+            animal_list.append(data[random.randint(0, len(data) - 1)].upper())
     
 
     context = {

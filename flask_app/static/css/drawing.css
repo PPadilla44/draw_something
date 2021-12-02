@@ -27,6 +27,7 @@ body {
   width: calc(100% - 150px);
   align-items: center;
   justify-content: space-between;
+  color: white;
 }
 
 .interact {
@@ -39,7 +40,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 200px;
+  width: 100%;
+  max-width: 200px;
 }
 
 .main {
@@ -93,6 +95,7 @@ body {
 .dash-drawings {
   width: fit-content;
 }
+
 .dash-drawings h1 {
   width: 100%;
   margin-bottom: 0;
@@ -324,6 +327,16 @@ a:hover {
   min-height: 205px;
 }
 
+#word {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  width: calc(100% - 150px);
+  align-items: center;
+  color: white;
+}
+
 @media screen and (max-width: 1100px) {
   .navbar .imageHolder h1 {
     font-size: 3rem;
@@ -365,12 +378,11 @@ a:hover {
 }
 
 @media screen and (max-width: 500px) {
-
   .names {
     width: fit-content;
   }
   .names h1 {
-    font-size: .75rem;
+    font-size: 0.75rem;
     width: fit-content;
   }
 
@@ -392,13 +404,12 @@ a:hover {
     max-width: 55px;
     text-align: center;
   }
-  .nav-btnHolder a{
-    font-size: .50rem;
+  .nav-btnHolder a {
+    font-size: 0.5rem;
     max-width: 55px;
     text-align: center;
     margin: 0;
     padding: 0;
-
   }
 
   .index {
@@ -421,14 +432,14 @@ a:hover {
   }
 
   #who {
-    font-size: .9rem;
+    font-size: 0.9rem;
   }
 
   #collapse-btn {
-    font-size: .75rem;
+    font-size: 0.75rem;
     max-width: 100px;
     text-align: center;
-    padding: .25rem;
+    padding: 0.25rem;
   }
 
   #search input {
@@ -436,10 +447,10 @@ a:hover {
   }
 
   #search button {
-    font-size: .75rem;
+    font-size: 0.75rem;
     max-width: 100px;
     text-align: center;
-    padding: .25rem;
+    padding: 0.25rem;
     margin: 0 !important;
   }
 
@@ -447,13 +458,13 @@ a:hover {
     margin: 0;
     font-size: 1rem;
   }
-  
+
   .select-user:hover {
     background-color: black;
     font-size: larger;
     transition: 0.5s;
   }
-  
+
   .select-user:hover h4 {
     font-size: 1.25rem;
     font-weight: 700;
@@ -461,14 +472,14 @@ a:hover {
   }
 
   .navbar a {
-    font-size: .50rem;
+    font-size: 0.5rem;
     max-width: 55px;
     text-align: center;
     margin: 0;
     padding: 0;
   }
 
-  .guess-nav  {
+  .guess-nav {
     min-height: 50px;
   }
   .guess-nav .imageHolder {
@@ -476,7 +487,7 @@ a:hover {
   }
 
   #guessTitle {
-    font-size: .75rem;
+    font-size: 0.75rem;
     white-space: nowrap;
   }
 
@@ -486,27 +497,105 @@ a:hover {
   }
 
   #opp {
-    font-size: 2rem;
+    font-size: 1.5rem;
+    margin: 1rem 0 !important;
   }
 
   #hello {
-    font-size: 1.5rem;
+    font-size: 1rem;
   }
 
   .words-holder {
-    background-color: yellow !important;
     height: calc(100vh - 103px) !important;
   }
 
   #choices {
+    height: 100%;
   }
 
   .choosing-list {
-    height: 100%;
-    color: red;
+    background-color: red;
+    max-height: fit-content;
+    height: calc(100% - 125px);
+    overflow: hidden;
   }
 
   .choosing-list li {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
+  .choosing-list h4 {
+    font-size: 2rem;
+  }
+  .choosing-list li:hover h4 {
+    font-size: 2.5rem;
+  }
+
+  #guessContainer {
+    width: 100%;
+    height: 100%;
+  }
+
+  #guessContainer img {
+    border: 2px solid black;
+    width: 100%;
+    height: 100%;
+    max-width: 375px;
+    max-height: 300px;
+    background-color: white;
+  }
+
+  #tools {
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .interact {
+    display: flex;
+    width: fit-content;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: .25rem;
+  }
+
+  .range-holder {
+    width: fit-content;
+    justify-content: center;
+  }
+
+  input[type=range] {
+    background-color:red;
+    width: 90%;
+  }
+
+  .form {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 150px;
+  }
+
+  .form button {
+    font-size: 0.5rem;
+    max-width: 55px;
+    text-align: center;
+    margin: 0;
+  }
+
+  .form a {
+    font-size: 0.5rem;
+    max-width: 55px;
+    text-align: center;
+    margin: 0;
+  }
+
+  #word {
+    font-size: 2.5rem;
+  }
 }
