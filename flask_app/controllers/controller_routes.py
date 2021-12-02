@@ -28,18 +28,25 @@ def show_reg():
 @app.route("/dashboard")
 def dashboard():
 
+    print(session)
+
     if "uuid" not in session:
         return redirect("/register")
 
     context = {
         "curUser" : model_user.User.get_user_by_id( { "id": session["uuid"] } ),
-        "userList" : model_user.User.get_all_users_not_self( { "id" : session['uuid'] } ),
+        "userList" : model_user.User.get_all_users_not_self( { "id" : session["uuid"] } ),
     }
 
     return render_template("dashboard.html", **context)
 
 @app.route("/get_images")
 def get_images():
+
+    print(session)
+
+    print(session['uuid'])
+
     games = model_drawing.Drawing.get_all_drawings_by_receiver_id( { "receiver_id": session['uuid'] } )
     if(games):
         for game in games:
