@@ -78,7 +78,7 @@ def add_points():
     return jsonify(msg="SUCCESS")
 
 
-@app.route('/skip-login', methods=['POST'])
+@app.route('/skip-login')
 def skip_login():
 
     all_users = model_user.User.get_all_users()

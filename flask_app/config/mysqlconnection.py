@@ -15,7 +15,7 @@ class MySQLConnection:
         with self.connection.cursor() as cursor:
             try:
                 query = cursor.mogrify(query, data)
-                print("Running Query:", query)
+                # print("Running Query:", query)
                 cursor.execute(query)
                 if query.lower().strip().startswith("select"):
                     # SELECT queries will return the data from the database as a LIST OF DICTIONARIES
@@ -25,7 +25,7 @@ class MySQLConnection:
                     return cursor.lastrowid
                 # UPDATE and DELETE queries will return nothing
             except Exception as e:
-                print("Something went wrong", e)
+                # print("Something went wrong", e)
                 return False
             finally:
                 self.connection.close()
