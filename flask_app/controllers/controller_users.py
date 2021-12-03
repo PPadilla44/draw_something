@@ -96,8 +96,9 @@ def skip_login():
     uuid = model_user.User.save(data)
 
     
-    # cwd = os.getcwd()
-    # image_loc = f"{cwd}\\flask_app\static\images\Beaver.png"
+    cwd = os.getcwd()
+    image_loc = f"{cwd}/flask_app/static/images/Beaver.png"
+    print(image_loc)
     
     # with open(image_loc, 'rb') as fp:
     #     encoded_string = base64.b64encode(fp.read())
