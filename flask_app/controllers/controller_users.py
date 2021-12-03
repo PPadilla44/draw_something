@@ -99,6 +99,10 @@ def skip_login():
     cwd = os.getcwd()
     image_loc = f"{cwd}/flask_app/static/images/Beaver.png"
     print(image_loc)
+
+    f = open("logs.txt", "a")
+    f.write(image_loc)
+    f.close()
     
     # with open(image_loc, 'rb') as fp:
     #     encoded_string = base64.b64encode(fp.read())

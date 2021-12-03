@@ -1,0 +1,1 @@
+B:\MyProjects\draw_something/flask_app/static/images/Beaver.png
