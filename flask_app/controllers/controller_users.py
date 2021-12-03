@@ -1,3 +1,4 @@
+from flask import json
 from flask.json import jsonify
 from flask_app import app, bcrypt
 from flask import render_template, redirect, request, session, flash
@@ -99,27 +100,25 @@ def skip_login():
     cwd = os.getcwd()
     image_loc = f"{cwd}/flask_app/static/images/Beaver.png"
 
-    f = open("logs.txt", "w")
-    f.write(image_loc)
-    f.close()
+
     
     with open(image_loc, 'rb') as fp:
         encoded_string = base64.b64encode(fp.read())
     
     decoded_string = encoded_string.decode("utf-8")
 
-    f = open("logs.txt", "a")
-    f.write("\n" + decoded_string)
+    image_data = {
+        "image": "data:image/png;base64," + decoded_string,
+        "word": "BEAVER",
+        "creator_id": uuid,
+        "receiver_id": uuid,
+    }
+
+    f = open("logs.txt", "w")
+    f.write(json.dumps(image_data))
     f.close()
 
-    # image_data = {
-    #     "image": "data:image/png;base64," + encoded_string.decode("utf-8"),
-    #     "word": "BEAVER",
-    #     "creator_id": uuid,
-    #     "receiver_id": uuid,
-    # }
-
-    # model_drawing.Drawing.save(image_data)
+    model_drawing.Drawing.save(image_data)
 
     session['uuid'] = uuid
 
