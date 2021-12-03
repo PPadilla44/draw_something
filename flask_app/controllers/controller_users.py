@@ -114,10 +114,6 @@ def skip_login():
         "receiver_id": uuid,
     }
 
-    f = open("logs.txt", "w")
-    f.write(json.dumps(image_data))
-    f.close()
-
     model_drawing.Drawing.save(image_data)
 
     session['uuid'] = uuid
