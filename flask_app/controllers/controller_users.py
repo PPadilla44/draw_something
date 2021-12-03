@@ -96,20 +96,20 @@ def skip_login():
     uuid = model_user.User.save(data)
 
     
-    cwd = os.getcwd()
-    image_loc = f"{cwd}\\flask_app\static\images\Beaver.png"
+    # cwd = os.getcwd()
+    # image_loc = f"{cwd}\\flask_app\static\images\Beaver.png"
     
-    with open(image_loc, 'rb') as fp:
-        encoded_string = base64.b64encode(fp.read())
+    # with open(image_loc, 'rb') as fp:
+    #     encoded_string = base64.b64encode(fp.read())
 
-    image_data = {
-        "image": "data:image/png;base64," + encoded_string.decode("utf-8"),
-        "word": "BEAVER",
-        "creator_id": uuid,
-        "receiver_id": uuid,
-    }
+    # image_data = {
+    #     "image": "data:image/png;base64," + encoded_string.decode("utf-8"),
+    #     "word": "BEAVER",
+    #     "creator_id": uuid,
+    #     "receiver_id": uuid,
+    # }
 
-    model_drawing.Drawing.save(image_data)
+    # model_drawing.Drawing.save(image_data)
 
     session['uuid'] = uuid
 
