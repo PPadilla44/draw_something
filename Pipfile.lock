@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "eb3cf101f9fb80697b55d3afab2b4c71e4e333d6cf65bed140097ec654e6e1e5"
+            "sha256": "9da9a979a67505cae2c2f695e8b0b8715705109860e6773ca1bfc22c6e18908d"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -292,6 +292,14 @@
             ],
             "markers": "python_version >= '3.5'",
             "version": "==6.1"
+        },
+        "waitress": {
+            "hashes": [
+                "sha256:29af5a53e9fb4e158f525367678b50053808ca6c21ba585754c77d790008c746",
+                "sha256:69e1f242c7f80273490d3403c3976f3ac3b26e289856936d1f620ed48f321897"
+            ],
+            "index": "pypi",
+            "version": "==2.0.0"
         },
         "werkzeug": {
             "hashes": [
